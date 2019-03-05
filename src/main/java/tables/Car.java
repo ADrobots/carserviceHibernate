@@ -11,7 +11,7 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer car_id;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "customer_id")
     private Customers customers;
 
