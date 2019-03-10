@@ -12,11 +12,11 @@ public class Issue {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Integer issue_id;
 
-   @ManyToOne
+   @ManyToOne(fetch = FetchType.LAZY)
    @JoinColumn(name = "car_id")
    private Car car;
 
-   @ManyToOne
+   @ManyToOne(fetch = FetchType.LAZY)
    @JoinColumn(name = "mechanic_id")
    private Mechanic mechanic;
 

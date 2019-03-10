@@ -11,12 +11,15 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer car_id;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_id")
     private Customers customers;
 
+    @Column(name = "model")
+    private String model;
+
     @Column(name = "vin", length = 11)
-    private Character vin;
+    private String vin;
 
     @Column(name = "plate_number")
     private String plate_number;
@@ -41,11 +44,11 @@ public class Car {
         this.customers = customers;
     }
 
-    public Character getVin() {
+    public String getVin() {
         return vin;
     }
 
-    public void setVin(Character vin) {
+    public void setVin(String vin) {
         this.vin = vin;
     }
 
@@ -64,4 +67,14 @@ public class Car {
     public void setColor(String color) {
         this.color = color;
     }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public Car() {}
 }

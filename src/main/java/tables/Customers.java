@@ -1,9 +1,12 @@
 package tables;
 
 import com.mysql.cj.protocol.ColumnDefinition;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "customers")
@@ -44,6 +47,9 @@ public class Customers {
     @Column(name = "building")
     private String building;
 
+    @OneToMany(mappedBy = "customers", cascade = CascadeType.ALL)
+    /*@Cascade(org.hibernate.annotations.CascadeType.ALL)*/
+    private List<Car> cars = new ArrayList<Car>();
 
     //get and set=========================================
 
@@ -135,6 +141,21 @@ public class Customers {
         this.building = building;
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
+    }
+
+    //========constructor========
+
+
+    public Customers() {
+    }
+
+
     @Override
     public String toString() {
         return "Customers{" +
@@ -151,4 +172,8 @@ public class Customers {
                 ", building='" + building + '\'' +
                 '}';
     }
+
+
+
+
 }

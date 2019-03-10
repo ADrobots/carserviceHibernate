@@ -1,61 +1,68 @@
 import connect.HibernateConfig;
-import dao.SessionDao;
+import dao.CarDao;
+import dao.CustomersDao;
+import dao.IssueDao;
+import dao.MechanicDao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import tables.Car;
 import tables.Customers;
+import tables.Issue;
+import tables.Mechanic;
 
 public class Main {
+    private  static CustomersDao customersDao;
+    private static CarDao carDao;
+    private static IssueDao issueDao;
+    private static MechanicDao mechanicDao;
+
     public static void main(String[] args) {
 
 
-        /*//get
-        SessionDao.getCustomer(3);
-
-        //create
-        Customers c=new Customers();
-        c.setFirst_name("Ivan");
-        SessionDao.createCustomer(c);*/
-
-        //delete
-        Customers c=new Customers();
-        c.setCustomer_id(4);
-        SessionDao.deleteComplete(c);
-
-
-        /*SessionFactory sessionFactory=HibernateConfig.getSessionFactory();*/
-
-
-
-       /* Session session=sessionFactory.openSession();
-        Transaction transaction=session.beginTransaction();*/
-
+        //create Customer
         /*Customers cust1=new Customers();
-        cust1.setFirst_name("Ivan");
-        cust1.setLast_name("Vazhnov");
-        cust1.setEmail("ppppp");
-        cust1.setPhone("123-123");
-        cust1.setBuilding("yes");*/
+        cust1.setFirst_name("Galina");
+        cust1.setLast_name("Dmitrienko");
+        cust1.setAge(28);
+        cust1.setGender('W');
+        cust1.setEmail("galina-bugunova@rambler.ru");
+        cust1.setPhone("89655402965");
+        cust1.setCity("Екатеринбург");
+        cust1.setStreet("Старых Большевиков");
+        cust1.setBuilding("yes");
 
-        /*Customers cust2=session.get(Customers.class, 60);
-        Car car2=session.get(Car.class,3);
+        customersDao.createCustomer(cust1);*/
 
-        Car car1=new Car();
-        car1.setPlate_number("m080xo96");
-        car1.setColor("black");
-        car1.setCustomers(cust2);
+        //create car
+       /* Car car1=new Car();
+        car1.setCustomers(customersDao.getCustomer(13));
+        car1.setModel("renault");
+        car1.setVin("33333333333333");
+        car1.setPlate_number("t225mo66");
+        car1.setColor("white");
 
-        session.save(cust2);
-        session.save(car1);
+        carDao.createCar(car1);*/
 
-        *//*Customers cust2=session.get(Customers.class, 3);*//*
+        //create issue
+        /*Issue issue1=new Issue();
+        issue1.setCar(carDao.getCar(9));
+        issue1.setMechanic(mechanicDao.getMechanic(1));
+        issue1.setPrice(1000);
+        issue1.setMan_hour(1);
 
+        issueDao.createIssue(issue1);*/
 
+        //create mechanic
+        /*Mechanic mechanic1=new Mechanic();
+        mechanic1.setFirst_name("PAvel");
+        mechanic1.setLast_name("Viktorovish");
+        mechanic1.setEducation("master");
+        mechanic1.setExperience(2);
 
-        transaction.commit();
-        session.close();*/
+        mechanicDao.createMechanic(mechanic1);*/
 
+        issueDao.deleteIssue(3);
 
 
 
